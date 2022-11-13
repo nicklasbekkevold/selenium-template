@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
-          distribution: 'oracle'
+          distribution: 'temurin'
 
       - name: Run test
         run: mvn package
