@@ -57,7 +57,7 @@ public final class Example extends BasePage {
     }
 
     public void clickOnCheckboxTwo() {
-        click(radio3_element);
+        click(checkbox2_element);
     }
 
 }
