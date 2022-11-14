@@ -61,6 +61,14 @@ public final class ExampleTest implements SeleniumTest {
         verifyInteractionMessage("Radio Button Changed");
     }
 
+    @Test(description = "Verify check box interaction")
+    @Description("Verify that a the correct message is shown when the check boxes change")
+    public void testCheckbox() {
+        openExamplePage();
+        clickOnCheckboxTwo();
+        verifyInteractionMessage("Checkbox Changed");
+    }
+
     @Step("Open example page")
     private void openExamplePage() {
         example.get();
@@ -79,6 +87,11 @@ public final class ExampleTest implements SeleniumTest {
     @Step("Click on radio button 3")
     private void clickOnRadioButtonThree() {
         example.clickOnRadioButtonThree();
+    }
+
+    @Step("Click on check box 2")
+    private void clickOnCheckboxTwo() {
+        example.clickOnCheckboxTwo();
     }
 
     @Step("Verify that the interaction message is: \"{0}\"")

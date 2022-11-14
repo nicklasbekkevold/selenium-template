@@ -18,6 +18,7 @@ public final class Example extends BasePage {
     private WebElement message;
     private WebElement image_element;
     private WebElement radio3_element;
+    private WebElement checkbox2_element;
 
     public Example(WebDriver driver) {
         super(driver);
@@ -52,6 +53,10 @@ public final class Example extends BasePage {
     }
 
     public void clickOnRadioButtonThree() {
+        click(radio3_element);
+    }
+
+    public void clickOnCheckboxTwo() {
         click(radio3_element);
     }
 
