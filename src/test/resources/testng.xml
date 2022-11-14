@@ -10,7 +10,7 @@
 
     <test name="Project test suite">
         <packages>
-            <package name="selenium.*"/>
+            <package name="org.example.project.example.*"/>
         </packages>
     </test>
 </suite>
