@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 @Issue("1")
 @Epic("Example tests")
@@ -67,6 +68,11 @@ public final class ExampleTest implements SeleniumTest {
         openExamplePage();
         clickOnCheckboxTwo();
         verifyInteractionMessage("Checkbox Changed");
+    }
+
+    @Test(description = "Failed test example")
+    void testShouldFail() {
+        assertTrue(false);
     }
 
     @Step("Open example page")
