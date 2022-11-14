@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>vwg.vw.wob</groupId>
-    <artifactId>sbt-tqa</artifactId>
+    <groupId>org.project</groupId>
+    <artifactId>example</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>sbt-tqa</name>
+    <name>selenium-template</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
