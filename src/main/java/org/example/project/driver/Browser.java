@@ -1,7 +1,7 @@
 package org.example.project.driver;
 
 public enum Browser {
-    CHROME, FIREFOX, EDGE;
+    CHROMIUM, CHROME, EDGE, FIREFOX;
 
     @Override
     public String toString() {

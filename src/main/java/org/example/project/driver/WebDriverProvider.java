@@ -18,7 +18,7 @@ public final class WebDriverProvider {
 
     private static final Duration PAGE_LOAD_TIMEOUT = Duration.of(30, ChronoUnit.SECONDS);
     private static final Duration IMPLICIT_WAIT_TIMEOUT = Duration.of(10, ChronoUnit.SECONDS);
-    private final static Browser DEFAULT_BROWSER = Browser.CHROME;
+    private final static Browser DEFAULT_BROWSER = Browser.CHROMIUM;
 
     private WebDriverProvider() {
     }
@@ -35,6 +35,22 @@ public final class WebDriverProvider {
         capabilities.setBrowserName(browser.toString());
         WebDriver driver = null;
         switch (browser) {
+            case CHROMIUM -> {
+                WebDriverManager.chromiumdriver().setup();
+                ChromeOptions options = new ChromeOptions();
+
+                // Add options
+                options.addArguments("--headless");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--window-size=1920,1200");
+                options.addArguments("--ignore-certificate-errors");
+                options.addArguments("--disable-extensions");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+
+                options.merge(capabilities);
+                driver = new ChromeDriver(options);
+            }
             case CHROME -> {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
