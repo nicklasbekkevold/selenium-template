@@ -2,8 +2,13 @@ name: test and deploy
 
 on:
   push:
-    branches: [ main ]
-    pull_requests: [ main ]
+    branches:
+    - main
+    paths-ignore:
+    - '**.md'
+  pull_request:
+    branches:
+    - main
 
 jobs:
   build:
