@@ -1,34 +1,60 @@
 package org.example.project.pages;
 
-import java.net.URISyntaxException;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
-public enum Page {
+import java.util.List;
 
-    EXAMPLE(getUrlFromResource("/example.html")),
-    GOOGLE("https://google.com");
+public abstract class Page extends LoadableComponent<Page> {
 
-    private final String url;
+    private static final int HALF_A_SECOND = 500; // ms
+    private static final int ONE_SECOND = 1000; // ms
+    private static final int TEN_SECONDS = 10000; // ms
 
-    Page(String url) {
-        this.url = url;
+    private final WebDriver driver;
+    private final JavascriptExecutor executor;
+
+    public Page(WebDriver driver) {
+        this.driver = driver;
+        executor = (JavascriptExecutor) driver;
     }
 
-    private static String getUrlFromResource(final String fileName) {
+    public List<WebElement> find(final By locator) {
+        return driver.findElements(locator);
+    }
+
+    public void click(final WebElement element) {
+        element.click();
+    }
+
+    public void clearAndType(final WebElement input, final String text) {
+        input.clear();
+        input.sendKeys(text);
+    }
+
+    public boolean doesElementHaveCssPropertyWithValue(final WebElement element, final String propertyName, final String expectedValue) {
+        return element.getCssValue(propertyName).equals(expectedValue);
+    }
+
+    public boolean isElementDisplayed(final WebElement element) {
         try {
-            String path = Page.class.getResource(fileName).toURI().toString();
-            return path.replace("file:/", "file:///");
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
+            return element.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
         }
     }
 
-    public String getUrl() {
-        return url;
+    public boolean isEnabled(final WebElement element) {
+        boolean enabled = element.isEnabled();
+        boolean classDisabled = element.getAttribute("class").contains("disabled");
+        boolean classAriaDisabled = element.getAttribute("aria-disabled").contains("true");
+        return enabled && !classDisabled && !classAriaDisabled;
     }
 
-    @Override
-    public String toString() {
-        return getUrl();
+    public void hoverOverElement(WebElement element) {
+        Actions action = new Actions(driver);
+        executor.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
     }
 
 }

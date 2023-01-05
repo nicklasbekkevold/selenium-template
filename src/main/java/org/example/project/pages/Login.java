@@ -1,5 +1,6 @@
 package org.example.project.pages;
 
+import org.example.project.environment.WebResource;
 import org.example.project.utils.Credentials;
 import org.example.project.utils.LoadCheck;
 import org.example.project.utils.StepLogger;
@@ -7,9 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public final class Login extends BasePage {
+public final class Login extends Page {
 
-    private final Page page = null; // TODO
+    private final WebResource webResource = null; // TODO
     private final WebDriver driver;
 
     private WebElement username;
@@ -23,7 +24,7 @@ public final class Login extends BasePage {
 
     @Override
     protected void load() {
-        driver.get(page.getUrl());
+        driver.get(webResource.getUrl());
     }
 
     @Override
@@ -36,7 +37,7 @@ public final class Login extends BasePage {
 
     public void login() {
         // Generating Login URL and login
-        String url = "https://" + Credentials.USERNAME + ":" + Credentials.PASSWORD + "@" + Page.GOOGLE.getUrl();
+        String url = "https://" + Credentials.USERNAME + ":" + Credentials.PASSWORD + "@" + WebResource.GOOGLE.getUrl();
         StepLogger.info("Login into page");
         driver.get(url);
     }

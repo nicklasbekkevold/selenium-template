@@ -1,5 +1,6 @@
 package org.example.project.pages;
 
+import org.example.project.environment.WebResource;
 import org.example.project.utils.LoadCheck;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,9 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public final class Example extends BasePage {
+public final class Example extends Page {
 
-    private final Page page = Page.EXAMPLE;
+    private final WebResource webResource = WebResource.EXAMPLE;
     private final WebDriver driver;
 
     private WebElement button_element;
@@ -28,7 +29,7 @@ public final class Example extends BasePage {
 
     @Override
     protected void load() {
-        driver.get(page.getUrl());
+        driver.get(webResource.getUrl());
     }
 
     @Override

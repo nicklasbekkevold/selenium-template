@@ -1,12 +1,13 @@
 package org.example.project.pages;
 
+import org.example.project.environment.WebResource;
 import org.example.project.fragments.GoogleSearchBar;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public final class Google extends BasePage {
+public final class Google extends Page {
 
-    private final Page page = Page.GOOGLE;
+    private final WebResource webResource = WebResource.GOOGLE;
     private final WebDriver driver;
 
     private GoogleSearchBar searchBar;
@@ -20,7 +21,7 @@ public final class Google extends BasePage {
 
     @Override
     protected void load() {
-        driver.get(page.getUrl());
+        driver.get(webResource.getUrl());
     }
 
     @Override
