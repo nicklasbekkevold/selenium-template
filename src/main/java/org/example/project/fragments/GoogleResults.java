@@ -1,6 +1,6 @@
 package org.example.project.fragments;
 
-import org.example.project.utils.LoadCheck;
+import org.example.project.utils.PageLoadHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,9 +32,8 @@ public final class GoogleResults extends LoadableComponent<GoogleResults> {
 
     @Override
     protected void isLoaded() throws Error {
-        LoadCheck
-                .waitForWithDriver(5, driver)
-                .untilElementVisible(results);
+        new PageLoadHelper(driver)
+                .checkIfVisible(results);
     }
 
     public void getResult(int index) {

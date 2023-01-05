@@ -1,6 +1,6 @@
 package org.example.project.fragments;
 
-import org.example.project.utils.LoadCheck;
+import org.example.project.utils.PageLoadHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -30,9 +30,8 @@ public final class GoogleSearchBar extends LoadableComponent<GoogleSearchBar> {
 
     @Override
     protected void isLoaded() throws Error {
-        LoadCheck
-                .waitForWithDriver(5, driver)
-                .untilElementVisible(input);
+        new PageLoadHelper(driver)
+                .checkIfVisible(input);
     }
 
     public void search(final String query) {

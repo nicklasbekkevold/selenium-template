@@ -1,7 +1,7 @@
 package org.example.project.pages;
 
 import org.example.project.environment.WebResource;
-import org.example.project.utils.LoadCheck;
+import org.example.project.utils.PageLoadHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -34,10 +34,10 @@ public final class Example extends Page {
 
     @Override
     protected void isLoaded() throws Error {
-        LoadCheck
-                .waitForWithDriver(10, driver)
-                .untilElementVisible(image_element)
-                .untilElementClickable(button_element);
+        new PageLoadHelper(driver)
+                .withDuration(Duration.ofSeconds(10))
+                .checkIfClickable(button_element)
+                .checkIfVisible(image_element);
     }
 
     public String getInteractionMessage() {
