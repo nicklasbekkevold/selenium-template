@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
 
 @Issue("1")
 @Epic("Example tests")
@@ -72,7 +72,7 @@ public final class ExampleTest implements SeleniumTest {
 
     @Test(description = "Failed test example")
     void testShouldFail() {
-        assertTrue(false);
+        fail("This test case should fail");
     }
 
     @Step("Open example page")
