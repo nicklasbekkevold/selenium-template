@@ -25,21 +25,13 @@ public final class PageLoadHelper {
         return this;
     }
 
-    public PageLoadHelper checkIfVisible(final WebElement element) {
-        try {
-            new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOf(element));
-            return this;
-        } catch (WebDriverException e) {
-            throw new Error("Element is not visible");
-        }
+    public PageLoadHelper checkIfVisible(final WebElement element) throws WebDriverException {
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.visibilityOf(element));
+        return this;
     }
 
-    public PageLoadHelper checkIfClickable(final WebElement element) {
-        try {
-            new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(element));
-            return this;
-        } catch (WebDriverException e) {
-            throw new Error("Element is not clickable");
-        }
+    public PageLoadHelper checkIfClickable(final WebElement element) throws WebDriverException {
+        new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(element));
+        return this;
     }
 }
