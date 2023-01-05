@@ -8,10 +8,6 @@ import java.util.List;
 
 public abstract class Page extends LoadableComponent<Page> {
 
-    private static final int HALF_A_SECOND = 500; // ms
-    private static final int ONE_SECOND = 1000; // ms
-    private static final int TEN_SECONDS = 10000; // ms
-
     private final WebDriver driver;
     private final JavascriptExecutor executor;
 
