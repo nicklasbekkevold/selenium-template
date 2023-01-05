@@ -1,11 +1,17 @@
 package org.example.project.environment;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.URISyntaxException;
+import java.net.URL;
 
 public enum WebResource {
 
     EXAMPLE(getUrlFromResource("/example.html")),
     GOOGLE("https://google.com");
+
+    private static final Logger logger = LoggerFactory.getLogger(WebResource.class);
 
     private final String url;
 
@@ -15,11 +21,15 @@ public enum WebResource {
 
     private static String getUrlFromResource(final String fileName) {
         try {
-            String path = WebResource.class.getResource(fileName).toURI().toString();
-            return path.replace("file:/", "file:///");
+            URL resource = WebResource.class.getResource(fileName);
+            if (resource != null) {
+                return resource.toURI().toString().replace("file:/", "file:///");
+            }
         } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        logger.info("Could not find web resource with filename {}", fileName);
+        return "";
     }
 
     public String getUrl() {
