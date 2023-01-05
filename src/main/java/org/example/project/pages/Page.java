@@ -1,7 +1,6 @@
 package org.example.project.pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.LoadableComponent;
 
 import java.util.List;
@@ -49,7 +48,6 @@ public abstract class Page extends LoadableComponent<Page> {
     }
 
     public void hoverOverElement(WebElement element) {
-        Actions action = new Actions(driver);
         executor.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
     }
 
